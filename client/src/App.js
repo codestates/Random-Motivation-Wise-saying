@@ -8,6 +8,9 @@ function App() {
         <h2 className='home'>Home</h2>
         <h3 className='MyPage'>MyPage</h3>
       </header>
+      <div>
+        <input type="text" />
+      </div>
     </div>
   );
 }

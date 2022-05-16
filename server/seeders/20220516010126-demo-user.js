@@ -11,13 +11,13 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-   await queryInterface.bulkInsert('users',[{
-     name: 'kimcoding',
-     email: 'kimcoding@codestates.com',
-     password: '1234',
-     createdAt: new Date(),
-     updatedAt: new Date()
-   }])
+    await queryInterface.bulkInsert('users',[{
+      name: 'kimcoding',
+      email: 'kimcoding@codestates.com',
+      password: '1234',
+      createdAt: new Date(),
+      updatedAt: new Date()
+    }])
 
   },
 
