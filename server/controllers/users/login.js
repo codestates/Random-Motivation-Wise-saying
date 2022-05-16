@@ -18,7 +18,7 @@ module.exports = (req, res) => {
             delete data.password
             
             res.cookie('jwt', token)
-            res.json({ data: data, message: 'login success'})
+            res.json({ data: token, message: 'login success'})
         }
     }).catch((err) => {
         console.log(err)
