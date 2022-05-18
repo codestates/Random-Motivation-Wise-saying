@@ -1,0 +1,28 @@
+.Myinfo {
+  margin: auto;
+  width: 600px;
+  height: 600px;
+  margin-top: 100px;
+  background: #f5cd79;
+  border: 1px solid black;
+  border-radius: 20px;
+}
+
+.Myinfo-box {
+  border: 1px solid black;
+  background-color: white;
+  margin-left: 100px;
+  margin-right: 100px;
+  width: 400px;
+  height: 100px;
+  line-height: 5.5rem;
+}
+
+.logout-Button {
+  margin-right: 100px;
+  width: 120px;
+}
+
+.Edit-Button {
+  width: 120px;
+}
