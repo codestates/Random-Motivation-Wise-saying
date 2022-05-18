@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-
+import { Button } from "react-bootstrap";
 axios.defaults.withCredentials = true;
 
 export default function Signup () {
@@ -11,7 +11,7 @@ export default function Signup () {
     password: ''
   });
   const [errorMessage, setErrorMessage] = useState('');
-  const history = useHistory();
+  const navigate = useNavigate();
   const handleInputValue = (key) => (e) => {
     setuserinfo({ ...userinfo, [key]: e.target.value });
   };
@@ -22,7 +22,7 @@ export default function Signup () {
         email:userinfo.email,
         password:userinfo.password,
       })
-      history.push('/login')
+      navigate('/login')
     }else{
       setErrorMessage('모든 항목은 필수입니다')
     }
@@ -51,13 +51,13 @@ export default function Signup () {
             />
           </div>
           <br></br><br></br><br></br><br></br><br></br><br></br>
-          <button
-            className='btn btn-signup'
-            type='submit'
+          <Button
+            variant="outline-secondary" className="loginButton"
+            
             onClick={handleSignup}
           >
             회원가입
-          </button>
+          </Button>
           <div className='alert-box'>{errorMessage}</div>
         </form>
       </center>

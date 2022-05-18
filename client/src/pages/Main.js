@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router";
 import { Button } from "react-bootstrap";
 import "./PagesCss/Main.css";
 import { randomSaying } from '../dummy.js';
@@ -7,7 +8,7 @@ import axios from 'axios';
 
 export default function Main() {
   const [WiseSaying, setWiseSaying] = useState(randomSaying [Math.floor(Math.random() * randomSaying.length)]);
-  
+  const navigate = useNavigate();
   function randomList () {
     setWiseSaying(randomSaying [Math.floor(Math.random() * randomSaying.length)])
   }
@@ -37,7 +38,9 @@ export default function Main() {
           </Button>
         </div>
         <div className="login">
-          <Button variant="outline-secondary" className="loginButton">
+          <Button variant="outline-secondary" className="loginButton" onClick={() => {
+                navigate('/login');
+              }}>
             로그인
           </Button>
         </div>
