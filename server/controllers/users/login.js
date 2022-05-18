@@ -13,12 +13,12 @@ module.exports = (req, res) => {
             res.status(401).send({message: 'Invalid user or wrong password'})
         } else {
             const data = result.dataValues
+            delete data.password
+
             const token = jwt.sign(data, process.env.ACCESS_SECRET, { expiresIn: '5m'})
             
-            delete data.password
-            
-            res.cookie('jwt', token)
-            res.json({ data: data, message: 'login success'})
+            res.cookie('token', token, { httpOnly: true })
+            res.json({ data: result, message: 'login success'})
         }
     }).catch((err) => {
         console.log(err)
