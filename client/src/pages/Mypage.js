@@ -2,9 +2,9 @@ import React from "react";
 import "./PagesCss/Mypage.css";
 import { Button } from "react-bootstrap";
 import { userinfo } from '../dummy.js';
-
+import { useNavigate } from "react-router";
 export default function Mypage() {
-  
+  const navigate = useNavigate();
 
   return (
     <div>
@@ -19,10 +19,12 @@ export default function Mypage() {
         <hr />
       </center>
       <div className="Mypage-Button">
-        <Button variant="outline-secondary" className="logout-Button">
+        <Button variant="outline-secondary" className="logout-Button" onClick={() => {
+                navigate('/edit_profile');}}>
           회원정보 수정
         </Button>
-        <Button variant="outline-secondary" className="Edit-Button">
+        <Button variant="outline-secondary" className="Edit-Button" onClick={() => {
+                navigate('/');}}>
           로그아웃
         </Button>
       </div>

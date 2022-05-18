@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-
+import { Button } from 'react-bootstrap';
+import { useNavigate} from 'react-router-dom'
 axios.defaults.withCredentials = true;
 
 export default function Login ({ handleResponseSuccess }) {
+  const navigate= useNavigate();
   const [loginInfo, setLoginInfo] = useState({
     email: '',
     password: ''
@@ -14,10 +16,9 @@ export default function Login ({ handleResponseSuccess }) {
     setLoginInfo({ ...loginInfo, [key]: e.target.value });
   };
   const handleLogin = () => {
-    // TODO : 서버에 로그인을 요청하고, props로 전달된 callback을 호출합니다.
-    // TODO : 이메일 및 비밀번호를 입력하지 않았을 경우 에러를 표시해야 합니다.
+    
     if(loginInfo.email !=='' && loginInfo.password !== ''){
-      axios.post("https://localhost:4000/signin",{
+      axios.post("https://localhost:4000/login",{
         email: loginInfo.email,
         password: loginInfo.password
       }).then(handleResponseSuccess)
@@ -29,11 +30,13 @@ export default function Login ({ handleResponseSuccess }) {
     <div>
       <center>
         <h1>Sign In</h1>
+        <br></br><br></br>
         <form onSubmit={(e) => e.preventDefault()}>
           <div>
             <span>이메일</span>
             <input type='email' onChange={handleInputValue('email')} />
           </div>
+          <br></br>
           <div>
             <span>비밀번호</span>
             <input
@@ -41,13 +44,14 @@ export default function Login ({ handleResponseSuccess }) {
               onChange={handleInputValue('password')}
             />
           </div>
-          <button className='btn btn-login' type='submit' onClick={handleLogin}>
+          <br></br><br></br><br></br><br></br>
+          <Button variant="outline-secondary" className="loginButton" onClick={handleLogin}>
             로그인
-          </button>
-          //Todo  소셜로그인을 위한 로고 모양으로 만들
-          
+          </Button>
+          <br></br><br></br>
           <div>
-            <Link to='/signup'><button>회원가입 하기</button></Link>
+            <Button variant="outline-secondary" className="loginButton" onClick={() => {
+                navigate('/signup');}}>회원가입 하기</Button>
           </div>
           <div className='alert-box'>{errorMessage}</div>
         </form>

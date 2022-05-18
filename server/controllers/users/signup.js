@@ -33,7 +33,7 @@ module.exports = async(req, res) => {
     }
     const token = jwt.sign(data, process.env.ACCESS_SECRET, { expiresIn: '5m'})
     delete data.password
-    res.cookie('jwt', token)
+    res.cookie('token', token)
     return res.status(201).send({message:"ok"})
   }).catch((err) => {
     return console.log(err)
