@@ -3,7 +3,6 @@ const jwt = require('jsonwebtoken')
 
 module.exports = (req, res) => {
     /** 로그인 상태에서 나만의 명언 추가, 삭제, 수정 */
-    console.log(req.params)
     if(!req.cookies['token']) { /** 쿠키가 없으면(로그인 된 상태가 아니면) 쿠키의 이름은 'token' */
         res.json({message: 'you should be logged in'})
     } else { /** 쿠키가 있으면(로그인 되어 있으면) */
@@ -38,7 +37,7 @@ module.exports = (req, res) => {
                 })
             })
         }).catch((error) => {
-            res.json({ message: 'error: ' + error })
+            res.status(500).json({ message: 'error: ' + error })
         })
 
 
