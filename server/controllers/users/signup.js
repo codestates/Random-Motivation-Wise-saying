@@ -2,30 +2,38 @@
 const { users } =require('../../models')
 const jwt = require('jsonwebtoken')
 
-module.exports = (req, res) => {
-    users.findOrCreate({
-        where: {
-            name: req.body.name,
-            email: req.body.email,
-            password: req.body.password
-        },
-        defaults: {
-            name: req.body.name,
-            email: req.body.email,
-            password: req.body.password
-        }
-    }).then(([user, created]) => {
-        if(created) { /** 생성이 됬다면 DB에 없었다는 뜻 */
-            let token = jwt.sign(user.dataValues)
+module.exports = async(req, res) => {
+  
+  if (
+        (req.body.name === undefined || req.body.name === null) ||
+        (req.body.email === undefined || req.body.email === null) ||
+        (req.body.password === undefined || req.body.password === null)
+    ) {
+      res.status(403).send('Wrong name or email or password');
+    }
+  users.findOrCreate({
+    where:{
+      name: req.body.name,
+      email: req.body.email,
+      password: req.body.password
+    },
+   
+  }).then(([result, created])=>{
+    if(!created){
+      res.status(400).send('email exists')
+    }
 
-            res.cookie('token', token)
-            res.status(201).json({data: user})
-        } else if(!created) { /** 이미 DB에 존재한다 */
-            res.status(400).json({message: '이미 존재하는 이메일입니다'})
-        } else {
-            res.status(500).json({message: 'error'})
-        }
-    }).catch((error) => {
-        res.status(403).json({message: 'Wrong username or email or password'})
-    })
-}
+    const data ={
+      id: result.dataValues.id,
+      name: result.dataValues.name,
+      email: result.dataValues.email,
+      password: result.dataValues.password
+    }
+    const token = jwt.sign(data, process.env.ACCESS_SECRET, { expiresIn: '5m'})
+    delete data.password
+    res.cookie('jwt', token)
+    res.status(201).send({message:"ok"})
+  }).catch((err) => {
+    console.log(err)
+  })
+};
