@@ -3,7 +3,7 @@ import "./PagesCss/Mypage.css";
 import { Button } from "react-bootstrap";
 import { userinfo } from '../dummy.js';
 import { useNavigate } from "react-router";
-export default function Mypage() {
+export default function Mypage({handleLogout}) {
   const navigate = useNavigate();
 
   return (
@@ -23,8 +23,7 @@ export default function Mypage() {
                 navigate('/edit_profile');}}>
           회원정보 수정
         </Button>
-        <Button variant="outline-secondary" className="Edit-Button" onClick={() => {
-                navigate('/');}}>
+        <Button variant="outline-secondary" className="Edit-Button" onClick={handleLogout}>
           로그아웃
         </Button>
       </div>
