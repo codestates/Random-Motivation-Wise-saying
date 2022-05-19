@@ -7,11 +7,19 @@ import { randomSaying } from '../dummy.js';
 import axios from 'axios';
 
 export default function Main() {
-  const [WiseSaying, setWiseSaying] = useState(randomSaying [Math.floor(Math.random() * randomSaying.length)]);
+  const [WiseSaying, setWiseSaying] = useState('');
   const navigate = useNavigate();
+
+
   function randomList () {
-    setWiseSaying(randomSaying [Math.floor(Math.random() * randomSaying.length)])
+    // setWiseSaying(randomSaying [Math.floor(Math.random() * randomSaying.length)])
+    axios.get("http://localhost:8080/")
+    .then((data) => {
+      console.log(data)
+    })
   }
+
+
 
   return (
     <div className="maindiv">
