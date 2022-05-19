@@ -32,12 +32,8 @@ module.exports = (req, res) => {
                             id: result2[i].dataValues.wise_saying_id
                         }
                     }).then((result3) => { /** 찾은 명언과 작가를 응답으로 전달해라 */
-                        for(let i = 0; i < result3.length; i++) {
-                            let arr = []
-                            arr.push(result3[i].dataValues)
-                            console.log(arr)
-                        }
-                        res.json({data: {arr, result}, message: 'ok'});
+
+                        res.json({data: result3, message: 'ok'});
                     })
                 }
             })

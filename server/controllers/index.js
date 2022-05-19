@@ -6,5 +6,7 @@ module.exports = {
     myWiseSayings: require('./myWiseSayings/myWiseSayingsList'),
     addMyWiseSayings: require('./myWiseSayings/addMyWiseSayings'),
     deleteMyWiseSayings: require('./myWiseSayings/deleteMyWiseSayings'),
-    patchMyWiseSayings: require('./myWiseSayings/patchMyWiseSayings')
+    patchMyWiseSayings: require('./myWiseSayings/patchMyWiseSayings'),
+    main: require('./makeRandomWiseSayings/main'),
+    mypage: require('./makeRandomWiseSayings/mypage')
 }
