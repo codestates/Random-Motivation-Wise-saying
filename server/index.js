@@ -17,13 +17,13 @@ app.use(express.urlencoded({ extended: false })); /** 클라이언트 body 해�
 app.get("/", controllers.main); /** 메인 페이지에서 랜덤 명언 생성*/
 app.get("/:userId", controllers.mypage); /** 나의 명언 페이지에서 랜덤 명언 생성*/
 
-// app.use(
-//     cors({
-//       origin: ['https://localhost:3000'],
-//       credentials: true,
-//       methods: ['GET', 'POST', 'OPTIONS']
-//     })
-//   );
+app.use(
+    cors({
+      origin: ['https://localhost:3000'],
+      credentials: true,
+      methods: ['GET', 'POST', 'OPTIONS']
+    })
+  );
 
 app.get("/myWiseSayings/:userId", controllers.myWiseSayings) /** 유저가 추가한 자기만의 명언리스트 */
 app.post("/myWiseSayings/:userId/:wiseSayingId", controllers.addMyWiseSayings) /** 자기만의 명언리스트에 명언 추가 */
