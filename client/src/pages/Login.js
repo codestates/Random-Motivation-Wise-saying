@@ -21,7 +21,8 @@ export default function Login ({ handleResponseSuccess }) {
       axios.post('http://localhost:8080/users/login',{
         email: loginInfo.email,
         password: loginInfo.password
-      }).then({handleResponseSuccess})
+      }).then( handleResponseSuccess )
+      navigate('/')
     }else{
       setErrorMessage('이메일과 비밀번호를 입력하세요')
     }

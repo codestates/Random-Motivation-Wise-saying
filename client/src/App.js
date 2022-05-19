@@ -12,34 +12,34 @@ import axios from "axios";
 
 function App() {
   let navigate = useNavigate();
-  /*const [isLogin, setIsLogin] = useState(false);*/
-  const [userinfo, setUserinfo] = useState(null);
-  const isAuthenticated =() =>{
-    axios.get('http://localhost:8080/users/auth', {
-      withCredentials: true
-    }).then( (res) =>{
-      setUserinfo(res);
-      //setIsLogin(true);
+  const [userinfo, setUserinfo] = useState();
+  const isAuthenticated = () => {
+    axios.get('http://localhost:8080/users/auth').then((res) =>{
+      
+      if(res.data.data.userInfo !==null){
+        const {name,email}= res.data.data.userInfo;
+        setUserinfo({name,email});
+        //console.log(userinfo)
+      }
       
     }).catch( error => {
       console.log(error);
     })
-  }
-  const handleResponseSuccess =() =>{
+  //navigate('/')
+  };
+  const handleResponseSuccess = () => {
     isAuthenticated();
-  }
-  const handleLogout =() =>{
+  };
+ /* const handleLogout =() =>{
     axios.post('http://localhost:8080/users/signout').then((res)=>{
       setUserinfo(null);
-      //setIsLogin(false);
       navigate('/')
     })
-  }
+  }*/
 
   useEffect(() => {
     isAuthenticated();
   }, []);
-
   return (
     <div className="App">
       <Navbar bg="light" variant="light" className="nav">
@@ -63,7 +63,7 @@ function App() {
               My wise saying
             </Nav.Link>
             <Nav.Link
-              href="myPage"
+              href="mypage"
               onClick={() => {
                 navigate("/mypage");
               }}
@@ -76,7 +76,7 @@ function App() {
       <br />
       <Routes>
         <Route path="/" element={<Main />} />
-        <Route path="/mypage" element={<Mypage userinfo={userinfo} handleLogout={handleLogout} />} />
+        <Route path="/mypage" element={<Mypage userinfo ={userinfo} /*handleLogout={handleLogout}*/ />} />
         <Route path="/my-Wise-saying" element={<MyWiseSaying />} />
         <Route path="/login" element={<Login handleResponseSuccess={handleResponseSuccess}/>} />
         <Route path="/signup" element={<Signup />} />
