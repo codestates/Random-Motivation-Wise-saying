@@ -23,6 +23,7 @@ CREATE TABLE user_wise_sayings (
   wise_saying_id INT,
   createdAt datetime DEFAULT CURRENT_TIMESTAMP,
   updatedAt datetime DEFAULT CURRENT_TIMESTAMP,
+  userId INT,
   PRIMARY KEY (id)
 );
 ALTER TABLE user_wise_sayings ADD FOREIGN KEY (user_id) REFERENCES users (id);
