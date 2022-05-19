@@ -29,6 +29,7 @@ app.post("/myWiseSayings/:userId/:wiseSayingId", controllers.addMyWiseSayings) /
 app.delete("/myWiseSayings/:userId/:wiseSayingId", controllers.deleteMyWiseSayings) /** 자기만의 명언리스트의 명언 삭제 */
 app.patch("/myWiseSayings/:userId/:wiseSayingId", controllers.patchMyWiseSayings) /** 자기만의 명언리스트의 명언 수정 */
 
+app.get("/users/auth", controllers.auth);
 app.post("/users/signup", controllers.signup);
 app.post("/users/login", controllers.login);
 app.post("/users/signout", controllers.signout);

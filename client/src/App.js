@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect, useState} from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import "./App.css";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
@@ -12,13 +12,34 @@ import axios from "axios";
 
 function App() {
   let navigate = useNavigate();
-  /*const handleLogout =() =>{
+  /*const [isLogin, setIsLogin] = useState(false);*/
+  const [userinfo, setUserinfo] = useState(null);
+  const isAuthenticated =() =>{
+    axios.get('http://localhost:8080/users/auth', {
+      withCredentials: true
+    }).then( (res) =>{
+      setUserinfo(res);
+      //setIsLogin(true);
+      
+    }).catch( error => {
+      console.log(error);
+    })
+  }
+  const handleResponseSuccess =() =>{
+    isAuthenticated();
+  }
+  const handleLogout =() =>{
     axios.post('http://localhost:8080/users/signout').then((res)=>{
       setUserinfo(null);
-      setIsLogin(false);
+      //setIsLogin(false);
       navigate('/')
     })
-  }*/
+  }
+
+  useEffect(() => {
+    isAuthenticated();
+  }, []);
+
   return (
     <div className="App">
       <Navbar bg="light" variant="light" className="nav">
@@ -55,9 +76,9 @@ function App() {
       <br />
       <Routes>
         <Route path="/" element={<Main />} />
-        <Route path="/mypage" element={<Mypage /*handleLogout={handleLogout}*/ />} />
+        <Route path="/mypage" element={<Mypage userinfo={userinfo} handleLogout={handleLogout} />} />
         <Route path="/my-Wise-saying" element={<MyWiseSaying />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login handleResponseSuccess={handleResponseSuccess}/>} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/edit_profile" element={<Edit_profile />} />
       </Routes>

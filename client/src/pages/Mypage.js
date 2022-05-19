@@ -3,9 +3,11 @@ import "./PagesCss/Mypage.css";
 import { Button } from "react-bootstrap";
 import { userinfo } from '../dummy.js';
 import { useNavigate } from "react-router";
-export default function Mypage({handleLogout}) {
+export default function Mypage({/*userinfo,*/ handleLogout}) {
   const navigate = useNavigate();
-
+  if(userinfo ===undefined){
+    return null;
+  }
   return (
     <div>
       <center className="Myinfo">
