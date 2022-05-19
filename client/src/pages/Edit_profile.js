@@ -1,7 +1,6 @@
 import React from 'react';
 import './PagesCss/Edit_profile.css'
 import { Button } from "react-bootstrap";
-import { randomSaying } from '../dummy.js';
 
 export default function editProfile() {
 

@@ -4,10 +4,10 @@ import './PagesCss/My-Wise_saying.css'
 import { Button } from "react-bootstrap";
 
 export default function MyWiseSaying() {
-  const [WiseSaying, setWiseSaying] = useState(randomSaying [Math.floor(Math.random() * randomSaying.length)]);
+  const [WiseSaying, setWiseSaying] = useState(randomSaying[Math.floor(Math.random() * randomSaying.length)]);
 
   function randomList () {
-    setWiseSaying(randomSaying [Math.floor(Math.random() * randomSaying.length)])
+    setWiseSaying(randomSaying[Math.floor(Math.random() * randomSaying.length)])
   }
 
   return (
