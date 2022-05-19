@@ -33,7 +33,7 @@ module.exports = (req, res) => {
                             id: result2[i].dataValues.wise_saying_id
                         }
                     }).then((result3) => {
-                            res.json(result3.dataValues)
+                            console.log(result3.dataValues)
                         // let arr2 = []
                         // for(let j = 0; j < result3.length; j++) {
                         //     arr2.push(result3[j].dataValues.script)
@@ -45,7 +45,5 @@ module.exports = (req, res) => {
         }).catch((error) => {
             res.status(500).json({ message: 'error: ' + error })
         })
-
-
     }
 }
