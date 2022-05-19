@@ -5,7 +5,7 @@ import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router";
 export default function Mypage(props) {
   const navigate = useNavigate();
-  console.log(props)
+  //console.log(props)
   return (
     <div>
       <center className="Myinfo">
@@ -23,7 +23,7 @@ export default function Mypage(props) {
                 navigate('/edit_profile');}}>
           회원정보 수정
         </Button>
-        <Button variant="outline-secondary" className="Edit-Button" /*onClick={handleLogout}*/>
+        <Button variant="outline-secondary" className="Edit-Button" onClick={props.handleLogout}>
           로그아웃
         </Button>
       </div>

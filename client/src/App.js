@@ -12,14 +12,17 @@ import axios from "axios";
 
 function App() {
   let navigate = useNavigate();
-  const [userinfo, setUserinfo] = useState();
+  const [userinfo, setUserinfo] = useState({
+    name: '',
+    email:''
+  });
   const isAuthenticated = () => {
     axios.get('http://localhost:8080/users/auth').then((res) =>{
       
       if(res.data.data.userInfo !==null){
         const {name,email}= res.data.data.userInfo;
         setUserinfo({name,email});
-        //console.log(userinfo)
+        console.log(userinfo)
       }
       
     }).catch( error => {
@@ -30,12 +33,12 @@ function App() {
   const handleResponseSuccess = () => {
     isAuthenticated();
   };
- /* const handleLogout =() =>{
-    axios.post('http://localhost:8080/users/signout').then((res)=>{
+  const handleLogout =() =>{
+    axios.post('http://localhost:8080/users/logout').then((res)=>{
       setUserinfo(null);
       navigate('/')
     })
-  }*/
+  }
 
   useEffect(() => {
     isAuthenticated();
@@ -76,7 +79,7 @@ function App() {
       <br />
       <Routes>
         <Route path="/" element={<Main />} />
-        <Route path="/mypage" element={<Mypage userinfo ={userinfo} /*handleLogout={handleLogout}*/ />} />
+        <Route path="/mypage" element={<Mypage userinfo ={userinfo} handleLogout={handleLogout} />} />
         <Route path="/my-Wise-saying" element={<MyWiseSaying />} />
         <Route path="/login" element={<Login handleResponseSuccess={handleResponseSuccess}/>} />
         <Route path="/signup" element={<Signup />} />
