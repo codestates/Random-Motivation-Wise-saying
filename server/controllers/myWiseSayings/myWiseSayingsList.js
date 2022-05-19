@@ -25,21 +25,22 @@ module.exports = (req, res) => {
                     user_id: result.dataValues.id /** 찾은 user_id로 */
                 }
             }).then((result2) => {
+                let arr = []
                 for(let i = 0; i < result2.length; i++) {
-                    // console.log(result2[i].dataValues.wise_saying_id)
-                    wise_sayings.findAll({ /** 찾은 wise_saying_id로 wise_sayings 테이블에서 해당하는 명언과 작가 찾아라 */
+                    arr.push(result2[i].dataValues.wise_saying_id)
+                    wise_sayings.findOne({
                         where: {
                             id: result2[i].dataValues.wise_saying_id
                         }
-                    }).then((result3) => { /** 찾은 명언과 작가를 응답으로 전달해라 */
-                        for(let i = 0; i < result3.length; i++) {
-                            let arr = []
-                            arr.push(result3[i].dataValues)
-                            console.log(arr)
-                        }
-                        res.json({data: {arr, result}, message: 'ok'});
+                    }).then((result3) => {
+                            res.json(result3.dataValues)
+                        // let arr2 = []
+                        // for(let j = 0; j < result3.length; j++) {
+                        //     arr2.push(result3[j].dataValues.script)
+                        // }
                     })
                 }
+                res.json(arr);
             })
         }).catch((error) => {
             res.status(500).json({ message: 'error: ' + error })

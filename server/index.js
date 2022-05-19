@@ -14,7 +14,8 @@ app.use(express.json()); /** 클라이언트 body 해석 위함 */
 app.use(cookieParser()); /** 쿠키 기능 활성화 */
 app.use(express.urlencoded({ extended: false })); /** 클라이언트 body 해석 위함 */
 
-app.get("/", (req, res) => res.json("Hi Claire Welcome to Node.js")); // 여기에 나중에 HTML을 넣어주게 된다.
+app.get("/", controllers.main); /** 메인 페이지에서 랜덤 명언 생성*/
+app.get("/:userId", controllers.mypage); /** 나의 명언 페이지에서 랜덤 명언 생성*/
 
 app.use(
     cors({
@@ -33,5 +34,6 @@ app.post("/users/signup", controllers.signup);
 app.post("/users/login", controllers.login);
 app.post("/users/signout", controllers.signout);
 app.post("/users/logout", controllers.logout);
+
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
