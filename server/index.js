@@ -5,7 +5,11 @@ const controllers = require("./controllers")
 const cookieParser = require("cookie-parser");
 const cors = require('cors')
 
-app.use(cors());
+app.use(cors({
+        origin: ['http://localhost:3000'],
+        credentials: true,
+        methods: ['GET', 'POST', 'OPTIONS']
+      }));
 app.use(express.json()); /** 클라이언트 body 해석 위함 */
 app.use(cookieParser()); /** 쿠키 기능 활성화 */
 app.use(express.urlencoded({ extended: false })); /** 클라이언트 body 해석 위함 */

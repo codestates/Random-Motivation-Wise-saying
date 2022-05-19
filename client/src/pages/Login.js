@@ -18,10 +18,10 @@ export default function Login ({ handleResponseSuccess }) {
   const handleLogin = () => {
     
     if(loginInfo.email !=='' && loginInfo.password !== ''){
-      axios.post("https://localhost:4000/login",{
+      axios.post("http://localhost:8080/users/login",{
         email: loginInfo.email,
         password: loginInfo.password
-      }).then(handleResponseSuccess)
+      }).then()
     }else{
       setErrorMessage('이메일과 비밀번호를 입력하세요')
     }

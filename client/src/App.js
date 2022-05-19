@@ -8,10 +8,17 @@ import MyWiseSaying from "./pages/My-Wise_saying";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Edit_profile from "./pages/Edit_profile"
+import axios from "axios";
 
 function App() {
   let navigate = useNavigate();
-  
+  /*const handleLogout =() =>{
+    axios.post('http://localhost:8080/users/signout').then((res)=>{
+      setUserinfo(null);
+      setIsLogin(false);
+      navigate('/')
+    })
+  }*/
   return (
     <div className="App">
       <Navbar bg="light" variant="light" className="nav">
@@ -21,7 +28,7 @@ function App() {
             <Nav.Link
               href="/"
               onClick={() => {
-                navigate("/");
+                navigate('/');
               }}
             >
               Home
@@ -48,7 +55,7 @@ function App() {
       <br />
       <Routes>
         <Route path="/" element={<Main />} />
-        <Route path="/mypage" element={<Mypage />} />
+        <Route path="/mypage" element={<Mypage /*handleLogout={handleLogout}*/ />} />
         <Route path="/my-Wise-saying" element={<MyWiseSaying />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />

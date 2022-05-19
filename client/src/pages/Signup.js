@@ -17,7 +17,7 @@ export default function Signup () {
   };
   const handleSignup = () => {
     if(userinfo.email !== '' && userinfo.password !=='' && userinfo.name !==''){
-      axios.post("https://localhost:4000/signup",{
+      axios.post('http://localhost:8080/users/signup',{
         name:userinfo.name,
         email:userinfo.email,
         password:userinfo.password,
