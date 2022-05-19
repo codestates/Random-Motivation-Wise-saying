@@ -1,4 +1,5 @@
 INSERT INTO users (name, email, password) VALUES ('dummy','dummy@gmail.com','123456');
+-- INSERT INTO user_wise_sayings (user_id, wise_saying_id) VALUES ('1', '1');
 INSERT INTO wise_sayings (script, talker) VALUES 
 ('삶이 있는 한 희망은 있다','키케로'),
 ('산다는것 그것은 치열한 전투이다','로망로랑'),
