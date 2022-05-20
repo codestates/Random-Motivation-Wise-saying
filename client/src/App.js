@@ -78,7 +78,7 @@ function App() {
       </Navbar>
       <br />
       <Routes>
-        <Route path="/" element={<Main />} />
+        <Route path="/" element={<Main />} userinfo = {userinfo} />
         <Route path="/mypage" element={<Mypage userinfo ={userinfo} handleLogout={handleLogout} />} />
         <Route path="/my-Wise-saying" element={<MyWiseSaying />} />
         <Route path="/login" element={<Login handleResponseSuccess={handleResponseSuccess}/>} />

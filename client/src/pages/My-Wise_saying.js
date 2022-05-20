@@ -24,12 +24,12 @@ export default function MyWiseSaying() {
             <hr size="5" />
             <div className="My-random-Saying-greatman">{WiseSaying.name}</div>
           </div>
-          <h3 className='listName'>명언 리스트</h3>
+          <h3 className='listName'>나만의 명언 수정</h3>
         </center>
 
         
         <div className='list-box'>
-          <div className='list-box-ul'>
+          {/* <div className='list-box-ul'>
           <ul>
           {randomSaying.map((data) =>
           <li key={data.id}>
@@ -40,7 +40,7 @@ export default function MyWiseSaying() {
           </li>
             )}
           </ul>
-          </div>
+          </div> */}
             <div>
           <div className='modify-List'>
             <div><span className='spanName spanBox'>위인 이름</span> <span className='spanBox'>명언</span></div>

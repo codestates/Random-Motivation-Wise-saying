@@ -26,12 +26,12 @@ app.use(
   );
 
 app.get("/myWiseSayings/:userId", controllers.myWiseSayings) /** 유저가 추가한 자기만의 명언리스트 */
-app.post("/myWiseSayings/:userId/:wiseSayingId", controllers.addMyWiseSayings) /** 자기만의 명언리스트에 명언 추가 */
+app.get("/myWiseSayings/:userId/:wiseSayingId", controllers.addMyWiseSayings) /** 자기만의 명언리스트에 명언 추가 */
 app.delete("/myWiseSayings/:userId/:wiseSayingId", controllers.deleteMyWiseSayings) /** 자기만의 명언리스트의 명언 삭제 */
 app.patch("/myWiseSayings/:userId/:wiseSayingId", controllers.patchMyWiseSayings) /** 자기만의 명언리스트의 명언 수정 */
 
 app.get("/users/auth", controllers.auth);
-app.post("/users/signup", controllers.signup);
+app.get("/users/signup", controllers.signup);
 app.post("/users/login", controllers.login);
 app.post("/users/signout", controllers.signout);
 app.post("/users/logout", controllers.logout);

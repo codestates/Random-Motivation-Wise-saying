@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 import { Button } from "react-bootstrap";
 import "./PagesCss/Main.css";
-import { randomSaying } from '../dummy.js';
+import { randomSaying, userinfo } from '../dummy.js';
 import axios from 'axios';
 
 export default function Main() {
@@ -16,8 +16,20 @@ export default function Main() {
     axios.get("http://localhost:8080/")
     .then((data) => {
       console.log(data)
+      setWiseSaying(data.data.data)
     })
   }
+
+  const addRandomSaying = () => {
+    console.log(userinfo)
+    axios.get("http://localhost:8080/myWiseSayings", {
+      params: {
+        userId: userinfo.email,
+        wiseSayingId: WiseSaying.id,
+      },
+    })
+  }
+
 
 
 
@@ -30,15 +42,15 @@ export default function Main() {
             <h4 className="Saying">명언</h4>
             <hr size="5" />
             <div className="random-Saying-List">
-              {WiseSaying.random}
+              {WiseSaying.script}
             </div>
             <h4>위인 이름</h4>
             <hr size="5" />
-            <div className="random-Saying-greatman">{WiseSaying.name}</div>
+            <div className="random-Saying-greatman">{WiseSaying.talker}</div>
           </div>
         </center>
         <div className="Mypage-Button">
-          <Button variant="outline-primary" className="Wise-Saying-add">
+          <Button variant="outline-primary" className="Wise-Saying-add" onClick={addRandomSaying}>
             랜덤명언 추가
           </Button>
           <Button variant="outline-primary" className="Another-Saying" onClick={randomList}>
