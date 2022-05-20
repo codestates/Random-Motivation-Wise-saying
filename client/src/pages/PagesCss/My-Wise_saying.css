@@ -52,9 +52,10 @@ li {
   margin: auto;
   margin-top: 20px;
   width: 600px;
-  height: 360px;
+  height: 300px;
   border: 1px solid black;
   border-radius: 20px;
+  margin-bottom: 20px;
 }
 
 .List-input {
@@ -98,6 +99,5 @@ li {
 .My-Another-Saying {
   margin-top: 50px;
   margin-bottom: 50px;
-  margin-left: 225px;
   height: 60px;
 }
