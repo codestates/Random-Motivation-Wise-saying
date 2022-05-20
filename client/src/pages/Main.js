@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 import { Button } from "react-bootstrap";
 import "./PagesCss/Main.css";
-import { randomSaying, userinfo } from '../dummy.js';
+// import { randomSaying, userinfo } from '../dummy.js';
 import axios from 'axios';
 
 export default function Main() {
@@ -20,15 +20,15 @@ export default function Main() {
     })
   }
 
-  const addRandomSaying = () => {
-    console.log(userinfo)
-    axios.get("http://localhost:8080/myWiseSayings", {
-      params: {
-        userId: userinfo.email,
-        wiseSayingId: WiseSaying.id,
-      },
-    })
-  }
+  const addRandomSaying = async () => {
+    
+    const mydata = await axios.get('http://localhost:8080/users/auth');
+    const myInfo = mydata.data.data.userInfo;
+    console.log(myInfo)
+
+    axios.get(`http://localhost:8080/myWiseSayings/${myInfo.id}/${WiseSaying.id}`
+    );
+  };
 
 
 
