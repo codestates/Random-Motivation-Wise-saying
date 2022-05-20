@@ -35,6 +35,6 @@ app.get("/users/signup", controllers.signup);
 app.post("/users/login", controllers.login);
 app.post("/users/signout", controllers.signout);
 app.post("/users/logout", controllers.logout);
-
+app.post("/users/editprofile", controllers.editprofile);
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
