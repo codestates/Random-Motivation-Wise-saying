@@ -4,6 +4,7 @@ module.exports = {
     login: require('./users/login'),
     signout: require('./users/signout'),
     logout: require('./users/logout'),
+    editprofile: require('./users/editprofile'),
     myWiseSayings: require('./myWiseSayings/myWiseSayingsList'),
     addMyWiseSayings: require('./myWiseSayings/addMyWiseSayings'),
     deleteMyWiseSayings: require('./myWiseSayings/deleteMyWiseSayings'),

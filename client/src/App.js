@@ -20,9 +20,9 @@ function App() {
     axios.get('http://localhost:8080/users/auth').then((res) =>{
       
       if(res.data.data.userInfo !==null){
-        const {name,email}= res.data.data.userInfo;
-        setUserinfo({name,email});
-        console.log(userinfo)
+        const {name,email,password}= res.data.data.userInfo;
+        setUserinfo({name,email,password});
+        
       }
       
     }).catch( error => {
@@ -39,6 +39,7 @@ function App() {
       navigate('/')
     })
   }
+  
 
   useEffect(() => {
     isAuthenticated();
@@ -83,7 +84,7 @@ function App() {
         <Route path="/my-Wise-saying" element={<MyWiseSaying />} />
         <Route path="/login" element={<Login handleResponseSuccess={handleResponseSuccess}/>} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/edit_profile" element={<Edit_profile />} />
+        <Route path="/edit_profile" element={<Edit_profile userinfo={userinfo} handleResponseSuccess={handleResponseSuccess} />} />
       </Routes>
     </div>
   );

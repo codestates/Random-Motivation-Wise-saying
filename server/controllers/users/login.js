@@ -13,7 +13,7 @@ module.exports = (req, res) => {
             res.status(401).send({message: 'Invalid user or wrong password'})
         } else {
             const data = result.dataValues
-            delete data.password
+            //delete data.password
 
             const token = jwt.sign(data, process.env.ACCESS_SECRET, { expiresIn: '20m'})
             
